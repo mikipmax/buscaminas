@@ -1,0 +1,1829 @@
+<html>
+    <head>
+        <title>Examen del posibilidad1imer parcial </title>
+        <script src="jq.js"></script>
+        <style>
+
+            #t{
+                margin: 0 auto;
+                background: black;
+                border-color: black;
+
+            }
+            h1{
+                font-size: 100%;
+                font: oblique bold 120% cursive; 
+            }
+            .celda:hover{
+                background: black;
+            }
+            .celda{
+                background: crimson;
+                width: 50px;
+                height: 50px;
+                color: window;
+                font-size: xx-large;
+                font: oblique bold 120% cursive; 
+            }
+            #btnR:hover{
+                background: black;
+            }
+            #btnR{
+                border-color: crimson;
+                color:window;
+                background: crimson;
+                width: 150px;
+                margin: 40px;
+                font: oblique bold 120% cursive; 
+            }
+            #txtR{
+                border-color: crimson;
+                color:window;
+                background: crimson;  
+                height: 30px;
+                font: oblique bold 135% cursive; 
+
+            }
+        </style>
+        <script>
+
+
+
+            $(document).ready(function () {
+//Función para bloquear todas las celdas si sale X
+                function bloquear() {
+                    $(".celda").prop("disabled", true);
+                    $(".celda").css("background", "green");
+                }
+                html = "<center><h1>Corrección Aporte  Parcial #1</h1></center><table border=1 id=t>";
+                for (var i = 1; i <= 8; i++) {
+                    html += "<tr>";
+                    for (j = 1; j <= 8; j++) {
+
+
+                        html += "<td ><input type=button class=celda  id=p" + i + j + ">";
+                        html += "</td>";
+                    }
+                    html += "</tr>";
+                }
+                html += "</table><center>\n\
+        <input type=text id=txtR ><input type=button value= Reiniciar id=btnR></center>";
+
+                $("#tabla").html(html);
+                //Bloquer el texto de mostrar resultado para que usuario no pueda escribir
+                $("#txtR").prop("disabled", true);
+                //--------------------------------------------------------------------//
+                $(".celda").each(function () {//recorriendo cada item de la celda
+
+
+                    $(this).click(function () { //al dar click en cualquiera de los items
+
+                        //Creando valores aleatorios como X y O
+                        var aleatorio = (Math.floor(Math.random() * 8));
+                        var arreglo = "OOOOOOOX";
+                        var arreglo2 = "OOXOOOOX";
+                        var posibilidad1 = arreglo.substring(aleatorio, aleatorio + 1);
+                        var posibilidad2 = arreglo2.substring(aleatorio, aleatorio + 1);
+
+                        //condicionando para qeu al dar click se exitienda hacia los extremos en forma de X
+                        //-------------------------------------------------------------------------------------------------------------------//
+                        if (this.id === "p11") {
+                            var c = 0;
+                            fil = 1;
+                            col = 1;
+                            while (c <= 7) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p" + fil + col).prop("disabled", true);
+                                fil++;
+                                col++;
+                                c++;
+
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+
+                        }
+
+                        if (this.id === "p21") {
+                            var c1 = 0;
+                            fil1 = 2;
+                            col1 = 1;
+                            while (c1 <= 6) {
+                                $("#p" + fil1 + col1).val(posibilidad1);
+                                $("#p" + fil1 + col1).prop("disabled", true);
+                                $("#p" + fil1 + col1).css("background", "dodgerblue");
+                                $("#p12").val(posibilidad2);
+                                $("#p12").prop("disabled", true);
+                                $("#p12").css("background", "dodgerblue");
+                                fil1++;
+                                col1++;
+                                c1++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+
+
+                        }
+
+                        if (this.id === "p31") {
+                            var c1 = 0;
+                            fil1 = 3;
+                            col1 = 1;
+                            while (c1 <= 5) {
+                                $("#p" + fil1 + col1).val(posibilidad1);
+                                $("#p" + fil1 + col1).prop("disabled", true);
+                                $("#p" + fil1 + col1).css("background", "dodgerblue");
+                                $("#p22").val(posibilidad1);
+                                $("#p22").prop("disabled", true);
+                                $("#p22").css("background", "dodgerblue");
+                                $("#p13").val(posibilidad2);
+                                $("#p13").prop("disabled", true);
+                                $("#p13").css("background", "dodgerblue");
+                                fil1++;
+                                col1++;
+                                c1++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+
+                        if (this.id === "p41") {
+                            var c1 = 0;
+                            fil1 = 4;
+                            col1 = 1;
+                            while (c1 <= 4) {
+                                $("#p" + fil1 + col1).val(posibilidad1);
+                                $("#p" + fil1 + col1).prop("disabled", true);
+                                $("#p" + fil1 + col1).css("background", "dodgerblue");
+                                $("#p32").val(posibilidad1);
+                                $("#p32").prop("disabled", true);
+                                $("#p32").css("background", "dodgerblue");
+                                $("#p23").val(posibilidad2);
+                                $("#p23").prop("disabled", true);
+                                $("#p23").css("background", "dodgerblue");
+                                $("#p14").val(posibilidad1);
+                                $("#p14").prop("disabled", true);
+                                $("#p14").css("background", "dodgerblue");
+                                fil1++;
+                                col1++;
+                                c1++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p51") {
+                            var c1 = 0;
+                            fil1 = 5;
+                            col1 = 1;
+                            while (c1 <= 3) {
+                                $("#p" + fil1 + col1).val(posibilidad1);
+                                $("#p" + fil1 + col1).prop("disabled", true);
+                                $("#p" + fil1 + col1).css("background", "dodgerblue");
+                                $("#p42").val(posibilidad1);
+                                $("#p42").prop("disabled", true);
+                                $("#p42").css("background", "dodgerblue");
+                                $("#p33").val(posibilidad1);
+                                $("#p33").prop("disabled", true);
+                                $("#p33").css("background", "dodgerblue");
+                                $("#p24").val(posibilidad2);
+                                $("#p24").prop("disabled", true);
+                                $("#p24").css("background", "dodgerblue");
+                                $("#p15").val(posibilidad1);
+                                $("#p15").prop("disabled", true);
+                                $("#p15").css("background", "dodgerblue");
+                                fil1++;
+                                col1++;
+                                c1++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p61") {
+                            var c1 = 0;
+                            fil1 = 6;
+                            col1 = 1;
+                            while (c1 <= 2) {
+                                $("#p" + fil1 + col1).val(posibilidad1);
+                                $("#p" + fil1 + col1).prop("disabled", true);
+                                $("#p" + fil1 + col1).css("background", "dodgerblue");
+                                $("#p52").val(posibilidad1);
+                                $("#p52").prop("disabled", true);
+                                $("#p52").css("background", "dodgerblue");
+                                $("#p43").val(posibilidad1);
+                                $("#p43").prop("disabled", true);
+                                $("#p43").css("background", "dodgerblue");
+                                $("#p34").val(posibilidad2);
+                                $("#p34").prop("disabled", true);
+                                $("#p34").css("background", "dodgerblue");
+                                $("#p25").val(posibilidad1);
+                                $("#p25").prop("disabled", true);
+                                $("#p25").css("background", "dodgerblue");
+                                $("#p16").val(posibilidad1);
+                                $("#p16").prop("disabled", true);
+                                $("#p16").css("background", "dodgerblue");
+                                fil1++;
+                                col1++;
+                                c1++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p71") {
+                            var c1 = 0;
+                            fil1 = 7;
+                            col1 = 1;
+                            while (c1 <= 6) {
+                                $("#p" + fil1 + col1).val(posibilidad1);
+                                $("#p" + fil1 + col1).prop("disabled", true);
+                                $("#p" + fil1 + col1).css("background", "dodgerblue");
+                                $("#p82").val(posibilidad1);
+                                $("#p82").prop("disabled", true);
+                                $("#p82").css("background", "dodgerblue");
+                                fil1--;
+                                col1++;
+                                c1++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p81") {
+                            var c1 = 0;
+                            fil1 = 8;
+                            col1 = 1;
+                            while (c1 <= 7) {
+                                $("#p" + fil1 + col1).val(posibilidad1);
+                                $("#p" + fil1 + col1).prop("disabled", true);
+                                $("#p" + fil1 + col1).css("background", "dodgerblue");
+                                fil1--;
+                                col1++;
+                                c1++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p12") {
+                            var c = 0;
+                            fil = 1;
+                            col = 2;
+                            while (c <= 6) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p21").val(posibilidad2);
+                                $("#p21").prop("disabled", true);
+                                $("#p21").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p22") {
+                            var c = 0;
+                            fil = 1;
+                            col = 1;
+                            while (c <= 8) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p13").val(posibilidad1);
+                                $("#p13").prop("disabled", true);
+                                $("#p13").css("background", "dodgerblue");
+                                $("#p31").val(posibilidad2);
+                                $("#p31").prop("disabled", true);
+                                $("#p31").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p32") {
+                            var c = 0;
+                            fil = 2;
+                            col = 1;
+                            while (c <= 7) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p41").val(posibilidad1);
+                                $("#p41").prop("disabled", true);
+                                $("#p41").css("background", "dodgerblue");
+                                $("#p23").val(posibilidad2);
+                                $("#p23").prop("disabled", true);
+                                $("#p23").css("background", "dodgerblue");
+                                $("#p14").val(posibilidad2);
+                                $("#p14").prop("disabled", true);
+                                $("#p14").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p42") {
+                            var c = 0;
+                            fil = 3;
+                            col = 1;
+                            while (c <= 6) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p22").val(posibilidad1);
+                                $("#p22").prop("disabled", true);
+                                $("#p22").css("background", "dodgerblue");
+                                $("#p13").val(posibilidad2);
+                                $("#p13").prop("disabled", true);
+                                $("#p13").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p52") {
+                            var c = 0;
+                            fil = 4;
+                            col = 1;
+                            while (c <= 7) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p43").val(posibilidad1);
+                                $("#p43").prop("disabled", true);
+                                $("#p43").css("background", "dodgerblue");
+                                $("#p34").val(posibilidad2);
+                                $("#p34").prop("disabled", true);
+                                $("#p34").css("background", "dodgerblue");
+                                $("#p25").val(posibilidad2);
+                                $("#p25").prop("disabled", true);
+                                $("#p25").css("background", "dodgerblue");
+                                $("#p16").val(posibilidad2);
+                                $("#p16").prop("disabled", true);
+                                $("#p16").css("background", "dodgerblue");
+                                $("#p61").val(posibilidad2);
+                                $("#p61").prop("disabled", true);
+                                $("#p61").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p62") {
+                            var c = 0;
+                            fil = 7;
+                            col = 1;
+                            while (c <= 7) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p51").val(posibilidad1);
+                                $("#p51").prop("disabled", true);
+                                $("#p51").css("background", "dodgerblue");
+                                $("#p73").val(posibilidad1);
+                                $("#p73").prop("disabled", true);
+                                $("#p73").css("background", "dodgerblue");
+                                $("#p84").val(posibilidad1);
+                                $("#p84").prop("disabled", true);
+                                $("#p84").css("background", "dodgerblue");
+                                fil--;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p72") {
+                            var c = 0;
+                            fil = 8;
+                            col = 1;
+                            while (c <= 8) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p61").val(posibilidad1);
+                                $("#p61").prop("disabled", true);
+                                $("#p61").css("background", "dodgerblue");
+                                $("#p83").val(posibilidad1);
+                                $("#p83").prop("disabled", true);
+                                $("#p83").css("background", "dodgerblue");
+                                fil--;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p82") {
+                            var c = 0;
+                            fil = 8;
+                            col = 2;
+                            while (c <= 6) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p71").val(posibilidad1);
+                                $("#p71").prop("disabled", true);
+                                $("#p71").css("background", "dodgerblue");
+                                fil--;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p13") {
+                            var c = 0;
+                            fil = 1;
+                            col = 3;
+                            while (c <= 5) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p22").val(posibilidad1);
+                                $("#p22").prop("disabled", true);
+                                $("#p22").css("background", "dodgerblue");
+                                $("#p31").val(posibilidad1);
+                                $("#p31").prop("disabled", true);
+                                $("#p31").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p23") {
+                            var c = 0;
+                            fil = 1;
+                            col = 2;
+                            while (c <= 7) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p32").val(posibilidad1);
+                                $("#p32").prop("disabled", true);
+                                $("#p32").css("background", "dodgerblue");
+                                $("#p41").val(posibilidad1);
+                                $("#p41").prop("disabled", true);
+                                $("#p41").css("background", "dodgerblue");
+                                $("#p14").val(posibilidad2);
+                                $("#p14").prop("disabled", true);
+                                $("#p14").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p33") {
+                            var c = 0;
+                            fil = 1;
+                            col = 1;
+                            while (c <= 8) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p24").val(posibilidad1);
+                                $("#p24").prop("disabled", true);
+                                $("#p24").css("background", "dodgerblue");
+                                $("#p15").val(posibilidad1);
+                                $("#p15").prop("disabled", true);
+                                $("#p15").css("background", "dodgerblue");
+                                $("#p42").val(posibilidad1);
+                                $("#p42").prop("disabled", true);
+                                $("#p42").css("background", "dodgerblue");
+                                $("#p51").val(posibilidad2);
+                                $("#p51").prop("disabled", true);
+                                $("#p51").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p43") {
+                            var c = 0;
+                            var c1 = 0;
+                            fil = 2;
+                            col = 1;
+                            while (c <= 8) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            fil = 1;
+                            col = 6;
+                            while (c1 <= 5) {
+                                $("#p" + fil + col).val(posibilidad2);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c1++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p53") {
+                            var c = 0;
+                            fil = 3;
+                            col = 1;
+                            while (c <= 5) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p71").val(posibilidad1);
+                                $("#p71").prop("disabled", true);
+                                $("#p71").css("background", "dodgerblue");
+                                $("#p62").val(posibilidad1);
+                                $("#p62").prop("disabled", true);
+                                $("#p62").css("background", "dodgerblue");
+                                $("#p44").val(posibilidad1);
+                                $("#p44").prop("disabled", true);
+                                $("#p44").css("background", "dodgerblue");
+                                $("#p35").val(posibilidad2);
+                                $("#p35").prop("disabled", true);
+                                $("#p35").css("background", "dodgerblue");
+                                $("#p26").val(posibilidad1);
+                                $("#p26").prop("disabled", true);
+                                $("#p26").css("background", "dodgerblue");
+                                $("#p17").val(posibilidad1);
+                                $("#p17").prop("disabled", true);
+                                $("#p17").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p63") {
+                            var c = 0;
+                            fil = 1;
+                            col = 8;
+                            while (c <= 7) {
+
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p52").val(posibilidad1);
+                                $("#p52").prop("disabled", true);
+                                $("#p52").css("background", "dodgerblue");
+                                $("#p41").val(posibilidad1);
+                                $("#p41").prop("disabled", true);
+                                $("#p41").css("background", "dodgerblue");
+                                $("#p74").val(posibilidad1);
+                                $("#p74").prop("disabled", true);
+                                $("#p74").css("background", "dodgerblue");
+                                $("#p85").val(posibilidad1);
+                                $("#p85").prop("disabled", true);
+                                $("#p85").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p73") {
+                            var c = 0;
+                            fil = 2;
+                            col = 8;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p51").val(posibilidad1);
+                                $("#p51").prop("disabled", true);
+                                $("#p51").css("background", "dodgerblue");
+                                $("#p62").val(posibilidad1);
+                                $("#p62").prop("disabled", true);
+                                $("#p62").css("background", "dodgerblue");
+                                $("#p84").val(posibilidad1);
+                                $("#p84").prop("disabled", true);
+                                $("#p84").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p83") {
+                            var c = 0;
+                            fil = 3;
+                            col = 8;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p61").val(posibilidad1);
+                                $("#p61").prop("disabled", true);
+                                $("#p61").css("background", "dodgerblue");
+                                $("#p72").val(posibilidad1);
+                                $("#p72").prop("disabled", true);
+                                $("#p72").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p14") {
+                            var c = 0;
+                            fil = 1;
+                            col = 4;
+                            while (c <= 3) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p25").val(posibilidad1);
+                                $("#p25").prop("disabled", true);
+                                $("#p25").css("background", "dodgerblue");
+                                $("#p36").val(posibilidad1);
+                                $("#p36").prop("disabled", true);
+                                $("#p36").css("background", "dodgerblue");
+                                $("#p47").val(posibilidad1);
+                                $("#p47").prop("disabled", true);
+                                $("#p47").css("background", "dodgerblue");
+                                $("#p58").val(posibilidad1);
+                                $("#p58").prop("disabled", true);
+                                $("#p58").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p24") {
+                            var c = 0;
+                            fil = 1;
+                            col = 5;
+                            while (c <= 4) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p13").val(posibilidad1);
+                                $("#p13").prop("disabled", true);
+                                $("#p13").css("background", "dodgerblue");
+                                $("#p35").val(posibilidad1);
+                                $("#p35").prop("disabled", true);
+                                $("#p35").css("background", "dodgerblue");
+                                $("#p46").val(posibilidad1);
+                                $("#p46").prop("disabled", true);
+                                $("#p46").css("background", "dodgerblue");
+                                $("#p57").val(posibilidad1);
+                                $("#p57").prop("disabled", true);
+                                $("#p57").css("background", "dodgerblue");
+                                $("#p68").val(posibilidad1);
+                                $("#p68").prop("disabled", true);
+                                $("#p68").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p34") {
+                            var c = 0;
+                            fil = 1;
+                            col = 6;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p12").val(posibilidad1);
+                                $("#p12").prop("disabled", true);
+                                $("#p12").css("background", "dodgerblue");
+                                $("#p23").val(posibilidad1);
+                                $("#p23").prop("disabled", true);
+                                $("#p23").css("background", "dodgerblue");
+                                $("#p45").val(posibilidad1);
+                                $("#p45").prop("disabled", true);
+                                $("#p45").css("background", "dodgerblue");
+                                $("#p56").val(posibilidad2);
+                                $("#p56").prop("disabled", true);
+                                $("#p56").css("background", "dodgerblue");
+                                $("#p67").val(posibilidad1);
+                                $("#p67").prop("disabled", true);
+                                $("#p67").css("background", "dodgerblue");
+                                $("#p78").val(posibilidad1);
+                                $("#p78").prop("disabled", true);
+                                $("#p78").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p44") {
+                            var c = 0;
+                            fil = 1;
+                            col = 7;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p11").val(posibilidad1);
+                                $("#p11").prop("disabled", true);
+                                $("#p11").css("background", "dodgerblue");
+                                $("#p22").val(posibilidad1);
+                                $("#p22").prop("disabled", true);
+                                $("#p22").css("background", "dodgerblue");
+                                $("#p33").val(posibilidad1);
+                                $("#p33").prop("disabled", true);
+                                $("#p33").css("background", "dodgerblue");
+                                $("#p55").val(posibilidad1);
+                                $("#p55").prop("disabled", true);
+                                $("#p55").css("background", "dodgerblue");
+                                $("#p66").val(posibilidad1);
+                                $("#p66").prop("disabled", true);
+                                $("#p66").css("background", "dodgerblue");
+                                $("#p77").val(posibilidad1);
+                                $("#p77").prop("disabled", true);
+                                $("#p77").css("background", "dodgerblue");
+                                $("#p88").val(posibilidad1);
+                                $("#p88").prop("disabled", true);
+                                $("#p88").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p54") {
+                            var c = 0;
+                            fil = 1;
+                            col = 8;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p21").val(posibilidad1);
+                                $("#p21").prop("disabled", true);
+                                $("#p21").css("background", "dodgerblue");
+                                $("#p32").val(posibilidad1);
+                                $("#p32").prop("disabled", true);
+                                $("#p32").css("background", "dodgerblue");
+                                $("#p43").val(posibilidad1);
+                                $("#p43").prop("disabled", true);
+                                $("#p43").css("background", "dodgerblue");
+                                $("#p65").val(posibilidad1);
+                                $("#p65").prop("disabled", true);
+                                $("#p65").css("background", "dodgerblue");
+                                $("#p76").val(posibilidad1);
+                                $("#p76").prop("disabled", true);
+                                $("#p76").css("background", "dodgerblue");
+                                $("#p87").val(posibilidad1);
+                                $("#p87").prop("disabled", true);
+                                $("#p87").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p64") {
+                            var c = 0;
+                            fil = 2;
+                            col = 8;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p31").val(posibilidad1);
+                                $("#p31").prop("disabled", true);
+                                $("#p31").css("background", "dodgerblue");
+                                $("#p42").val(posibilidad1);
+                                $("#p42").prop("disabled", true);
+                                $("#p42").css("background", "dodgerblue");
+                                $("#p53").val(posibilidad1);
+                                $("#p53").prop("disabled", true);
+                                $("#p53").css("background", "dodgerblue");
+                                $("#p75").val(posibilidad1);
+                                $("#p75").prop("disabled", true);
+                                $("#p75").css("background", "dodgerblue");
+                                $("#p86").val(posibilidad2);
+                                $("#p86").prop("disabled", true);
+                                $("#p86").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p74") {
+                            var c = 0;
+                            fil = 3;
+                            col = 8;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p41").val(posibilidad1);
+                                $("#p41").prop("disabled", true);
+                                $("#p41").css("background", "dodgerblue");
+                                $("#p52").val(posibilidad1);
+                                $("#p52").prop("disabled", true);
+                                $("#p52").css("background", "dodgerblue");
+                                $("#p63").val(posibilidad1);
+                                $("#p63").prop("disabled", true);
+                                $("#p63").css("background", "dodgerblue");
+                                $("#p85").val(posibilidad1);
+                                $("#p85").prop("disabled", true);
+                                $("#p85").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p84") {
+                            var c = 0;
+                            fil = 4;
+                            col = 8;
+                            while (c <= 4) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p51").val(posibilidad1);
+                                $("#p51").prop("disabled", true);
+                                $("#p51").css("background", "dodgerblue");
+                                $("#p62").val(posibilidad1);
+                                $("#p62").prop("disabled", true);
+                                $("#p62").css("background", "dodgerblue");
+                                $("#p73").val(posibilidad1);
+                                $("#p73").prop("disabled", true);
+                                $("#p73").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p15") {
+                            var c = 0;
+                            fil = 1;
+                            col = 5;
+                            while (c <= 4) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p26").val(posibilidad1);
+                                $("#p26").prop("disabled", true);
+                                $("#p26").css("background", "dodgerblue");
+                                $("#p37").val(posibilidad1);
+                                $("#p37").prop("disabled", true);
+                                $("#p37").css("background", "dodgerblue");
+                                $("#p48").val(posibilidad2);
+                                $("#p48").prop("disabled", true);
+                                $("#p48").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p25") {
+                            var c = 0;
+                            fil = 1;
+                            col = 6;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p14").val(posibilidad1);
+                                $("#p14").prop("disabled", true);
+                                $("#p14").css("background", "dodgerblue");
+                                $("#p36").val(posibilidad1);
+                                $("#p36").prop("disabled", true);
+                                $("#p36").css("background", "dodgerblue");
+                                $("#p47").val(posibilidad1);
+                                $("#p47").prop("disabled", true);
+                                $("#p47").css("background", "dodgerblue");
+                                $("#p58").val(posibilidad1);
+                                $("#p58").prop("disabled", true);
+                                $("#p58").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p35") {
+                            var c = 0;
+                            fil = 1;
+                            col = 7;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p13").val(posibilidad1);
+                                $("#p13").prop("disabled", true);
+                                $("#p13").css("background", "dodgerblue");
+                                $("#p24").val(posibilidad1);
+                                $("#p24").prop("disabled", true);
+                                $("#p24").css("background", "dodgerblue");
+                                $("#p46").val(posibilidad2);
+                                $("#p46").prop("disabled", true);
+                                $("#p46").css("background", "dodgerblue");
+                                $("#p57").val(posibilidad1);
+                                $("#p57").prop("disabled", true);
+                                $("#p57").css("background", "dodgerblue");
+                                $("#p68").val(posibilidad1);
+                                $("#p68").prop("disabled", true);
+                                $("#p68").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p45") {
+                            var c = 0;
+                            fil = 1;
+                            col = 8;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p12").val(posibilidad1);
+                                $("#p12").prop("disabled", true);
+                                $("#p12").css("background", "dodgerblue");
+                                $("#p23").val(posibilidad1);
+                                $("#p23").prop("disabled", true);
+                                $("#p23").css("background", "dodgerblue");
+                                $("#p34").val(posibilidad2);
+                                $("#p34").prop("disabled", true);
+                                $("#p34").css("background", "dodgerblue");
+                                $("#p56").val(posibilidad1);
+                                $("#p56").prop("disabled", true);
+                                $("#p56").css("background", "dodgerblue");
+                                $("#p67").val(posibilidad1);
+                                $("#p67").prop("disabled", true);
+                                $("#p67").css("background", "dodgerblue");
+                                $("#p78").val(posibilidad1);
+                                $("#p78").prop("disabled", true);
+                                $("#p78").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p55") {
+                            var c = 0;
+                            fil = 2;
+                            col = 8;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p11").val(posibilidad1);
+                                $("#p11").prop("disabled", true);
+                                $("#p11").css("background", "dodgerblue");
+                                $("#p22").val(posibilidad1);
+                                $("#p22").prop("disabled", true);
+                                $("#p22").css("background", "dodgerblue");
+                                $("#p33").val(posibilidad2);
+                                $("#p33").prop("disabled", true);
+                                $("#p33").css("background", "dodgerblue");
+                                $("#p44").val(posibilidad1);
+                                $("#p44").prop("disabled", true);
+                                $("#p44").css("background", "dodgerblue");
+                                $("#p66").val(posibilidad1);
+                                $("#p66").prop("disabled", true);
+                                $("#p66").css("background", "dodgerblue");
+                                $("#p77").val(posibilidad1);
+                                $("#p77").prop("disabled", true);
+                                $("#p77").css("background", "dodgerblue");
+                                $("#p88").val(posibilidad1);
+                                $("#p88").prop("disabled", true);
+                                $("#p88").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p65") {
+                            var c = 0;
+                            fil = 2;
+                            col = 1;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p38").val(posibilidad1);
+                                $("#p38").prop("disabled", true);
+                                $("#p38").css("background", "dodgerblue");
+                                $("#p47").val(posibilidad1);
+                                $("#p47").prop("disabled", true);
+                                $("#p47").css("background", "dodgerblue");
+                                $("#p56").val(posibilidad2);
+                                $("#p56").prop("disabled", true);
+                                $("#p56").css("background", "dodgerblue");
+                                $("#p74").val(posibilidad1);
+                                $("#p74").prop("disabled", true);
+                                $("#p74").css("background", "dodgerblue");
+                                $("#p83").val(posibilidad1);
+                                $("#p83").prop("disabled", true);
+                                $("#p83").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p75") {
+                            var c = 0;
+                            fil = 3;
+                            col = 1;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p48").val(posibilidad1);
+                                $("#p48").prop("disabled", true);
+                                $("#p48").css("background", "dodgerblue");
+                                $("#p57").val(posibilidad1);
+                                $("#p57").prop("disabled", true);
+                                $("#p57").css("background", "dodgerblue");
+                                $("#p66").val(posibilidad2);
+                                $("#p66").prop("disabled", true);
+                                $("#p66").css("background", "dodgerblue");
+                                $("#p84").val(posibilidad1);
+                                $("#p84").prop("disabled", true);
+                                $("#p84").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p85") {
+                            var c = 0;
+                            fil = 4;
+                            col = 1;
+                            while (c <= 4) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p76").val(posibilidad1);
+                                $("#p76").prop("disabled", true);
+                                $("#p76").css("background", "dodgerblue");
+                                $("#p67").val(posibilidad1);
+                                $("#p67").prop("disabled", true);
+                                $("#p67").css("background", "dodgerblue");
+                                $("#p58").val(posibilidad2);
+                                $("#p58").prop("disabled", true);
+                                $("#p58").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p16") {
+                            var c = 0;
+                            fil = 1;
+                            col = 6;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p27").val(posibilidad1);
+                                $("#p27").prop("disabled", true);
+                                $("#p27").css("background", "dodgerblue");
+                                $("#p38").val(posibilidad1);
+                                $("#p38").prop("disabled", true);
+                                $("#p38").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p26") {
+                            var c = 0;
+                            fil = 1;
+                            col = 7;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p15").val(posibilidad1);
+                                $("#p15").prop("disabled", true);
+                                $("#p15").css("background", "dodgerblue");
+                                $("#p37").val(posibilidad1);
+                                $("#p37").prop("disabled", true);
+                                $("#p37").css("background", "dodgerblue");
+                                $("#p48").val(posibilidad1);
+                                $("#p48").prop("disabled", true);
+                                $("#p48").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p36") {
+                            var c = 0;
+                            fil = 1;
+                            col = 8;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p14").val(posibilidad1);
+                                $("#p14").prop("disabled", true);
+                                $("#p14").css("background", "dodgerblue");
+                                $("#p25").val(posibilidad1);
+                                $("#p25").prop("disabled", true);
+                                $("#p25").css("background", "dodgerblue");
+                                $("#p47").val(posibilidad1);
+                                $("#p47").prop("disabled", true);
+                                $("#p47").css("background", "dodgerblue");
+                                $("#p58").val(posibilidad1);
+                                $("#p58").prop("disabled", true);
+                                $("#p58").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p46") {
+                            var c = 0;
+                            fil = 2;
+                            col = 8;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p13").val(posibilidad1);
+                                $("#p13").prop("disabled", true);
+                                $("#p13").css("background", "dodgerblue");
+                                $("#p24").val(posibilidad1);
+                                $("#p24").prop("disabled", true);
+                                $("#p24").css("background", "dodgerblue");
+                                $("#p35").val(posibilidad1);
+                                $("#p35").prop("disabled", true);
+                                $("#p35").css("background", "dodgerblue");
+                                $("#p57").val(posibilidad1);
+                                $("#p57").prop("disabled", true);
+                                $("#p57").css("background", "dodgerblue");
+                                $("#p68").val(posibilidad1);
+                                $("#p68").prop("disabled", true);
+                                $("#p68").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p56") {
+                            var c = 0;
+                            fil = 1;
+                            col = 2;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p38").val(posibilidad1);
+                                $("#p38").prop("disabled", true);
+                                $("#p38").css("background", "dodgerblue");
+                                $("#p47").val(posibilidad1);
+                                $("#p47").prop("disabled", true);
+                                $("#p47").css("background", "dodgerblue");
+                                $("#p65").val(posibilidad1);
+                                $("#p65").prop("disabled", true);
+                                $("#p65").css("background", "dodgerblue");
+                                $("#p74").val(posibilidad1);
+                                $("#p74").prop("disabled", true);
+                                $("#p74").css("background", "dodgerblue");
+                                $("#p83").val(posibilidad1);
+                                $("#p83").prop("disabled", true);
+                                $("#p83").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p66") {
+                            var c = 0;
+                            fil = 1;
+                            col = 1;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p48").val(posibilidad1);
+                                $("#p48").prop("disabled", true);
+                                $("#p48").css("background", "dodgerblue");
+                                $("#p57").val(posibilidad1);
+                                $("#p57").prop("disabled", true);
+                                $("#p57").css("background", "dodgerblue");
+                                $("#p75").val(posibilidad1);
+                                $("#p75").prop("disabled", true);
+                                $("#p75").css("background", "dodgerblue");
+                                $("#p84").val(posibilidad1);
+                                $("#p84").prop("disabled", true);
+                                $("#p84").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p76") {
+                            var c = 0;
+                            fil = 2;
+                            col = 1;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p58").val(posibilidad1);
+                                $("#p58").prop("disabled", true);
+                                $("#p58").css("background", "dodgerblue");
+                                $("#p67").val(posibilidad1);
+                                $("#p67").prop("disabled", true);
+                                $("#p67").css("background", "dodgerblue");
+                                $("#p85").val(posibilidad1);
+                                $("#p85").prop("disabled", true);
+                                $("#p85").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p86") {
+                            var c = 0;
+                            fil = 3;
+                            col = 1;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p77").val(posibilidad1);
+                                $("#p77").prop("disabled", true);
+                                $("#p77").css("background", "dodgerblue");
+                                $("#p68").val(posibilidad1);
+                                $("#p68").prop("disabled", true);
+                                $("#p68").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p17") {
+                            var c = 0;
+                            fil = 1;
+                            col = 7;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p28").val(posibilidad1);
+                                $("#p28").prop("disabled", true);
+                                $("#p28").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p27") {
+                            var c = 0;
+                            fil = 1;
+                            col = 8;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p38").val(posibilidad1);
+                                $("#p38").prop("disabled", true);
+                                $("#p38").css("background", "dodgerblue");
+                                $("#p16").val(posibilidad1);
+                                $("#p16").prop("disabled", true);
+                                $("#p16").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p37") {
+                            var c = 0;
+                            fil = 2;
+                            col = 8;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p15").val(posibilidad1);
+                                $("#p15").prop("disabled", true);
+                                $("#p15").css("background", "dodgerblue");
+                                $("#p26").val(posibilidad1);
+                                $("#p26").prop("disabled", true);
+                                $("#p26").css("background", "dodgerblue");
+                                $("#p48").val(posibilidad1);
+                                $("#p48").prop("disabled", true);
+                                $("#p48").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p47") {
+                            var c = 0;
+                            fil = 3;
+                            col = 8;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p14").val(posibilidad1);
+                                $("#p14").prop("disabled", true);
+                                $("#p14").css("background", "dodgerblue");
+                                $("#p25").val(posibilidad1);
+                                $("#p25").prop("disabled", true);
+                                $("#p25").css("background", "dodgerblue");
+                                $("#p36").val(posibilidad2);
+                                $("#p36").prop("disabled", true);
+                                $("#p36").css("background", "dodgerblue");
+                                $("#p58").val(posibilidad1);
+                                $("#p58").prop("disabled", true);
+                                $("#p58").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p57") {
+                            var c = 0;
+                            fil = 4;
+                            col = 8;
+                            while (c <= 4) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p13").val(posibilidad1);
+                                $("#p13").prop("disabled", true);
+                                $("#p13").css("background", "dodgerblue");
+                                $("#p24").val(posibilidad1);
+                                $("#p24").prop("disabled", true);
+                                $("#p24").css("background", "dodgerblue");
+                                $("#p35").val(posibilidad2);
+                                $("#p35").prop("disabled", true);
+                                $("#p35").css("background", "dodgerblue");
+                                $("#p46").val(posibilidad1);
+                                $("#p46").prop("disabled", true);
+                                $("#p46").css("background", "dodgerblue");
+                                $("#p68").val(posibilidad1);
+                                $("#p68").prop("disabled", true);
+                                $("#p68").css("background", "dodgerblue");
+
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p67") {
+                            var c = 0;
+                            fil = 1;
+                            col = 2;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p58").val(posibilidad1);
+                                $("#p58").prop("disabled", true);
+                                $("#p58").css("background", "dodgerblue");
+                                $("#p76").val(posibilidad2);
+                                $("#p76").prop("disabled", true);
+                                $("#p76").css("background", "dodgerblue");
+                                $("#p85").val(posibilidad1);
+                                $("#p85").prop("disabled", true);
+                                $("#p85").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p77") {
+                            var c = 0;
+                            fil = 1;
+                            col = 1;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p68").val(posibilidad2);
+                                $("#p68").prop("disabled", true);
+                                $("#p68").css("background", "dodgerblue");
+                                $("#p86").val(posibilidad1);
+                                $("#p86").prop("disabled", true);
+                                $("#p86").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p87") {
+                            var c = 0;
+                            fil = 2;
+                            col = 1;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p78").val(posibilidad1);
+                                $("#p78").prop("disabled", true);
+                                $("#p78").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p18") {
+                            var c = 0;
+                            fil = 1;
+                            col = 8;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p28") {
+                            var c = 0;
+                            fil = 2;
+                            col = 8;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p17").val(posibilidad1);
+                                $("#p17").prop("disabled", true);
+                                $("#p17").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p38") {
+                            var c = 0;
+                            fil = 3;
+                            col = 8;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p27").val(posibilidad1);
+                                $("#p27").prop("disabled", true);
+                                $("#p27").css("background", "dodgerblue");
+                                $("#p16").val(posibilidad1);
+                                $("#p16").prop("disabled", true);
+                                $("#p16").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p48") {
+                            var c = 0;
+                            fil = 4;
+                            col = 8;
+                            while (c <= 4) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p15").val(posibilidad1);
+                                $("#p15").prop("disabled", true);
+                                $("#p15").css("background", "dodgerblue");
+                                $("#p26").val(posibilidad2);
+                                $("#p26").prop("disabled", true);
+                                $("#p26").css("background", "dodgerblue");
+                                $("#p37").val(posibilidad1);
+                                $("#p37").prop("disabled", true);
+                                $("#p37").css("background", "dodgerblue");
+                                fil++;
+                                col--;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p58") {
+                            var c = 0;
+                            fil = 1;
+                            col = 4;
+                            while (c <= 4) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p67").val(posibilidad1);
+                                $("#p67").prop("disabled", true);
+                                $("#p67").css("background", "dodgerblue");
+                                $("#p76").val(posibilidad2);
+                                $("#p76").prop("disabled", true);
+                                $("#p76").css("background", "dodgerblue");
+                                $("#p85").val(posibilidad1);
+                                $("#p85").prop("disabled", true);
+                                $("#p85").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X" || posibilidad2 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p68") {
+                            var c = 0;
+                            fil = 1;
+                            col = 3;
+                            while (c <= 5) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p77").val(posibilidad1);
+                                $("#p77").prop("disabled", true);
+                                $("#p77").css("background", "dodgerblue");
+                                $("#p86").val(posibilidad1);
+                                $("#p86").prop("disabled", true);
+                                $("#p86").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p78") {
+                            var c = 0;
+                            fil = 1;
+                            col = 2;
+                            while (c <= 6) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                $("#p87").val(posibilidad1);
+                                $("#p87").prop("disabled", true);
+                                $("#p87").css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+                        if (this.id === "p88") {
+                            var c = 0;
+                            fil = 1;
+                            col = 1;
+                            while (c <= 7) {
+                                $("#p" + fil + col).val(posibilidad1);
+                                $("#p" + fil + col).prop("disabled", true);
+                                $("#p" + fil + col).css("background", "dodgerblue");
+                                fil++;
+                                col++;
+                                c++;
+                            }
+                            if (posibilidad1 === "X") {
+                                bloquear();
+                                $("#txtR").val("! Perdiste, inténtalo otra vez ¡");
+                            }
+                        }
+
+                        //-------------------------------------------------------------------------------------------------------------------//
+                        //Para riniciar el juego--------------------------
+                        $("#btnR").click(function () {
+                            window.location = "index.html";
+                        });
+
+                        if ((($("#p11").val()) === "O") && (($("#p21").val()) === "O") && (($("#p31").val()) === "O") && (($("#p41").val()) === "O")
+                                && (($("#p51").val()) === "O") && (($("#p61").val()) === "O") && (($("#p71").val()) === "O") && (($("#p81").val()) === "O")
+                                && (($("#p18").val()) === "O") && (($("#p17").val()) === "O") && (($("#p16").val()) === "O") && (($("#p15").val()) === "O")
+                                && (($("#p14").val()) === "O") && (($("#p13").val()) === "O") && (($("#p12").val()) === "O") && (($("#p28").val()) === "O")
+                                && (($("#p38").val()) === "O") && (($("#p48").val()) === "O") && (($("#p58").val()) === "O") && (($("#p68").val()) === "O")
+                                && (($("#p78").val()) === "O") && (($("#p88").val()) === "O") && (($("#p87").val()) === "O") && (($("#p86").val()) === "O")
+                                && (($("#p85").val()) === "O") && (($("#p84").val()) === "O") && (($("#p83").val()) === "O") && (($("#p82").val()) === "O")) {
+                            $("#txtR").val("Felicidades has ganado  :D");
+                        }
+
+                    });
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div id="tabla"></div>
+    </body>
+</html>
